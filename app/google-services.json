@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "170630311919",
+    "project_id": "chifast-2021",
+    "storage_bucket": "chifast-2021.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:170630311919:android:b5f5885e79b05f0cbe901a",
+        "android_client_info": {
+          "package_name": "com.chifanet.chifast"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "170630311919-k6bhss4cvf5k9eh7u50qtvh75rgahnbf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMqU0ad_0nfmpp9e4QPNGAw68Ep5qFMOI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "170630311919-k6bhss4cvf5k9eh7u50qtvh75rgahnbf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:170630311919:android:acde83111f59ee0ebe901a",
+        "android_client_info": {
+          "package_name": "com.maid.chifast"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "170630311919-k6bhss4cvf5k9eh7u50qtvh75rgahnbf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMqU0ad_0nfmpp9e4QPNGAw68Ep5qFMOI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "170630311919-k6bhss4cvf5k9eh7u50qtvh75rgahnbf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
