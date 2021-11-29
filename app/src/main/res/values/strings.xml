@@ -9,5 +9,6 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="prefs_file">com.chifanet.chifast.PREFERENCE_FILE_KEY</string>
 
 </resources>

@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container"
+    android:id="@+id/authLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingLeft="16dp"
@@ -24,18 +24,32 @@
         app:layout_constraintVertical_bias="0.903"
         app:srcCompat="@drawable/rectangulodatos" />
 
+    <TextView
+        android:id="@+id/textBienvenida"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="164dp"
+        android:gravity="center"
+        android:text="BIENVENIDO"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:textSize="23dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
         android:id="@+id/username"
         android:layout_width="253dp"
         android:layout_height="48dp"
-        android:layout_marginTop="216dp"
+        android:layout_marginTop="18dp"
         android:hint="Ingresa tu correo..."
         android:inputType="textEmailAddress"
         android:selectAllOnFocus="true"
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textBienvenida" />
 
     <EditText
         android:id="@+id/password"
@@ -54,45 +68,66 @@
         app:layout_constraintTop_toBottomOf="@+id/username" />
 
     <Button
-        android:id="@+id/btnlogin"
+        android:id="@+id/btnIngresar"
         android:layout_width="260dp"
         android:layout_height="59dp"
         android:layout_gravity="start"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="64dp"
+        android:layout_marginTop="30dp"
         android:backgroundTint="#FF1546"
         android:text="Ingresar"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password"
-        app:layout_constraintVertical_bias="0.103" />
+        app:layout_constraintTop_toBottomOf="@+id/password"/>
 
-    <Button
-        android:id="@+id/btnRegister"
-        android:layout_width="260dp"
-        android:layout_height="59dp"
-        android:layout_gravity="start"
-        android:backgroundTint="#FF1546"
-        android:text="Registrate"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password"
-        app:layout_constraintVertical_bias="0.361" />
-    <TextView
-        android:id="@+id/ingreso"
+        <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="INICIAR SESION"
-        tools:ignore="MissingConstraints"
-        android:textStyle="italic"
-        android:textColor="#000AFF"
-        android:lineHeight="1dp"/>
+        android:text="o"
+        android:textSize="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/btnIngresar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/loginWithGoogle"/>
+
+    <ImageButton
+        android:id="@+id/loginWithGoogle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/googleicon"
+        android:backgroundTint="#00FFFFFF"
+        app:layout_constraintTop_toBottomOf="@+id/btnIngresar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="40dp"/>
+
+    <LinearLayout
+        android:id="@+id/contenedorLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView7"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginWithGoogle"
+        android:layout_marginBottom="50dp"
+        android:gravity="center"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Aun no tienes usuario?"
+            app:layout_constraintTop_toBottomOf="@+id/btnRegister"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+        <TextView
+            android:id="@+id/txtGoRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" Crear usuario."
+            android:textColor="#D20E0E"/>
+
+    </LinearLayout>
 
     <ProgressBar
         android:id="@+id/loading"
