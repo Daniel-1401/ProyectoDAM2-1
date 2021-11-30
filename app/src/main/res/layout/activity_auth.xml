@@ -10,7 +10,7 @@
     android:paddingRight="16dp"
     android:paddingBottom="16dp"
     android:background="@drawable/login"
-    tools:context=".AuthActivity">
+    tools:context=".activities.AuthActivity">
 
     <ImageView
         android:id="@+id/imageView7"

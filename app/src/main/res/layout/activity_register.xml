@@ -9,7 +9,7 @@
     android:paddingRight="16dp"
     android:paddingBottom="16dp"
     android:background="@drawable/login"
-    tools:context=".RegisterActivity">
+    tools:context=".activities.RegisterActivity">
 
 
     <ImageView

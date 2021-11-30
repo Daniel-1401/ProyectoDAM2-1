@@ -10,5 +10,6 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="prefs_file">com.chifanet.chifast.PREFERENCE_FILE_KEY</string>
+    <string name="registro_exitoso">Te has registrado correctamente.</string>
 
 </resources>

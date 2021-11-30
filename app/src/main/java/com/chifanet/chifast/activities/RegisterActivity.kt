@@ -1,80 +1,65 @@
-package com.chifanet.chifast
+package com.chifanet.chifast.activities
 
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import androidx.activity.result.contract.ActivityResultContracts
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import com.google.firebase.analytics.FirebaseAnalytics
-import com.google.firebase.auth.FirebaseAuth
-import androidx.constraintlayout.widget.ConstraintLayout
+import com.chifanet.chifast.HomeActivity
+import com.chifanet.chifast.ProviderType
+import com.chifanet.chifast.R
+import com.chifanet.chifast.firestore.FirestoreClass
+import com.chifanet.chifast.modes.User
 import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import kotlinx.android.synthetic.main.activity_auth.*
+import kotlinx.android.synthetic.main.activity_register.*
+import kotlinx.android.synthetic.main.activity_register.loginWithGoogle
+import kotlinx.android.synthetic.main.activity_register.password
+import kotlinx.android.synthetic.main.activity_register.username
 
-class AuthActivity : AppCompatActivity() {
+class RegisterActivity : AppCompatActivity() {
 
-    private lateinit var googleSignInClient: GoogleSignInClient
     private val GOOGLE_SIGN_IN = 100
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
-
-        Thread.sleep(1100)
-        setTheme(R.style.ChifastTheme)
-
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_auth)
+        setContentView(R.layout.activity_register)
 
-        val analytics:FirebaseAnalytics = FirebaseAnalytics.getInstance(this)
+        val analytics = FirebaseAnalytics.getInstance(this)
         val bundle = Bundle()
         bundle.putString("message", "Integracion de Firebase completa")
         analytics.logEvent("InitScreen", bundle)
 
-        session()
         setup()
-    }
-
-    override fun onStart(){
-        super.onStart()
-
-        authLayout.visibility = View.VISIBLE
-
-    }
-
-    private fun session() {
-       val prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE)
-        val email = prefs.getString("email", null)
-        val provider = prefs.getString("provider", null)
-
-       if (email != null && provider != null){
-           authLayout.visibility = View.INVISIBLE
-           showHome(email, ProviderType.valueOf(provider))
-       }
-
     }
 
     private fun setup() {
 
         title = "Autenticación"
 
-        btnIngresar.setOnClickListener {
+        btnRegister.setOnClickListener {
             if (username.text.isNotEmpty() && password.text.isNotEmpty()){
                 FirebaseAuth.getInstance()
-                    .signInWithEmailAndPassword(
+                    .createUserWithEmailAndPassword(
                         username.text.toString(),
                         password.text.toString()
                     ).addOnCompleteListener{
                         if (it.isSuccessful){
+                            val firebaseUser: FirebaseUser = it.result!!.user!!
+
+                            val user = User(
+                                firebaseUser.uid,
+                                username.text.toString().trim{ it <= ' ' }
+                            )
+
+                            FirestoreClass().registerUser(this@RegisterActivity,user)
+
                             showHome(it.result?.user?.email?:"", ProviderType.BASIC)
                         }else{
                             showAlert()
@@ -82,13 +67,13 @@ class AuthActivity : AppCompatActivity() {
                     }
             }
         }
-        txtGoRegister.setOnClickListener {
-            showRegister()
+        txtGoLogin.setOnClickListener {
+            showLogin()
         }
         loginWithGoogle.setOnClickListener{
             // Configure Google Sign In
             val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                    //getString(R.String.default_web_client_id)
+                //getString(R.String.default_web_client_id)
                 .requestIdToken("170630311919-k6bhss4cvf5k9eh7u50qtvh75rgahnbf.apps.googleusercontent.com")
                 .requestEmail()
                 .build()
@@ -100,15 +85,15 @@ class AuthActivity : AppCompatActivity() {
         }
     }
 
-    private fun showRegister() {
-        val registerIntent = Intent(this, RegisterActivity::class.java)
-        startActivity(registerIntent)
+    private fun showLogin() {
+        val loginIntent = Intent(this, AuthActivity::class.java)
+        startActivity(loginIntent)
     }
 
     private fun showAlert() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Error")
-        builder.setMessage("Se ah producido un error en la autenticacion del usuario")
+        builder.setMessage("Se ah producido un error en el registro del usuario")
         builder.setPositiveButton("Acepar", null)
         val dialog: AlertDialog = builder.create()
         dialog.show()
@@ -136,7 +121,16 @@ class AuthActivity : AppCompatActivity() {
                     val credential = GoogleAuthProvider.getCredential(account.idToken, null)
                     FirebaseAuth.getInstance().signInWithCredential(credential).addOnCompleteListener{
                         if (it.isSuccessful){
-                            showHome(account.email?:"", ProviderType.GOOGLE)
+                            val firebaseUser: FirebaseUser = it.result!!.user!!
+
+                            val user = User(
+                                firebaseUser.email.toString(),
+                                username.text.toString().trim{ it <= ' ' }
+                            )
+
+                            FirestoreClass().registerUser(this@RegisterActivity,user)
+
+                            showHome(it.result?.user?.email?:"", ProviderType.GOOGLE)
                         }else{
                             showAlert()
                         }
@@ -149,4 +143,14 @@ class AuthActivity : AppCompatActivity() {
 
         }
     }
+
+    fun userRegistrationSucess(){
+
+        Toast.makeText(
+            this@RegisterActivity,
+            resources.getString(R.string.registro_exitoso),
+            Toast.LENGTH_SHORT
+        ).show()
+    }
+
 }

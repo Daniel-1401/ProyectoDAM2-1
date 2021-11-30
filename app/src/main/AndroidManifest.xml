@@ -10,13 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/ChifastTheme">
         <activity
-            android:name=".RegisterActivity"
+            android:name=".activities.RegisterActivity"
             android:exported="false" />
         <activity
             android:name=".HomeActivity"
             android:exported="true" />
         <activity
-            android:name=".AuthActivity"
+            android:name=".activities.AuthActivity"
             android:exported="true"
             android:theme="@style/SplashTheme">
             <intent-filter>
