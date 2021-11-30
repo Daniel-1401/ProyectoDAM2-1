@@ -162,13 +162,19 @@
         app:layout_constraintTop_toBottomOf="@+id/recycler_categories" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_food"
-        android:layout_marginTop="25dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="25dp"
+        android:id="@+id/menuRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        app:layoutManager="LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.0"
+        tools:context=".Activities.MainActivity"
+        tools:listitem="@layout/menu_content" />
 
 
     <com.google.android.material.card.MaterialCardView
