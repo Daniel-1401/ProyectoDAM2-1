@@ -54,8 +54,9 @@ class RegisterActivity : AppCompatActivity() {
                             val firebaseUser: FirebaseUser = it.result!!.user!!
 
                             val user = User(
+                                username.text.toString().trim{ it <= ' ' },
                                 firebaseUser.uid,
-                                username.text.toString().trim{ it <= ' ' }
+                                ProviderType.GOOGLE.toString()
                             )
 
                             FirestoreClass().registerUser(this@RegisterActivity,user)
