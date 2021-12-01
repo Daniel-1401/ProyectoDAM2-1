@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeActivity"
-    android:background="@color/white">
+    android:background="@drawable/splash"
+    tools:context=".HomeActivity">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/frameLayout"
         android:layout_width="347dp"
@@ -84,13 +85,14 @@
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:scaleType="centerCrop"
                 android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
                 android:src="@drawable/profile" />
 
         </com.google.android.material.card.MaterialCardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -98,7 +100,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="10dp"
         android:text="Solo para ti"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="15dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
@@ -108,7 +110,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Disfruta las mejores comidas"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="17dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/textView"
@@ -130,36 +132,16 @@
         tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck" />
 
     <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Categorías"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/editText"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_categories"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="15dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-    <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="227dp"
         android:text="Elige lo que más te gusta"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/recycler_categories"
-        app:layout_constraintTop_toBottomOf="@+id/recycler_categories" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/menuRecyclerView"
@@ -180,14 +162,14 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_marginBottom="20dp"
         android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
         app:cardBackgroundColor="#FF1546"
         app:cardCornerRadius="30dp"
-        app:strokeWidth="2dp"
-        app:strokeColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" >
+        app:layout_constraintEnd_toEndOf="parent"
+        app:strokeColor="@color/white"
+        app:strokeWidth="2dp">
 
 
         <ImageView
